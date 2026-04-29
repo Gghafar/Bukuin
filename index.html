@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUKUIN — Jual Beli Buku Bekas Mahasiswa ITS</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ══════════════════════════════
+       SIDEBAR (Desktop)
+  ══════════════════════════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-icon">📚</div>
+      <div class="sidebar-brand-text">
+        <div class="sidebar-brand-name">BUKUIN</div>
+        <div class="sidebar-brand-tag">Buku Bekas · ITS</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-screen="home" onclick="goToScreen('home')">
+        <span class="nav-item-icon">🏠</span> Library
+      </button>
+      <button class="nav-item" data-screen="search" onclick="goToScreen('search')">
+        <span class="nav-item-icon">🔍</span> Browse Buku
+      </button>
+
+      <div class="nav-divider"></div>
+
+      <button class="nav-sell-btn" data-screen="sell" onclick="goToScreen('sell')">
+        ＋ Jual Buku
+      </button>
+
+      <div class="nav-divider"></div>
+
+      <button class="nav-item" data-screen="profile" onclick="goToScreen('profile')">
+        <span class="nav-item-icon">👤</span> Profil Saya
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user" onclick="goToScreen('profile')">
+        <div class="sidebar-user-avatar">G</div>
+        <div>
+          <div class="sidebar-user-name">Gandrung Ghafar</div>
+          <div class="sidebar-user-nrp">5054231008 · TI '23</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ══════════════════════════════
+       MAIN WRAPPER
+  ══════════════════════════════ -->
+  <div class="main-wrapper">
+
+    <!-- TOP HEADER -->
+    <header class="top-header">
+      <!-- Mobile brand logo -->
+      <div class="header-mobile-brand">
+        <div class="header-mobile-brand-icon">📚</div>
+        BUKUIN
+      </div>
+
+      <!-- Global search bar -->
+      <div class="header-search-bar">
+        <span class="header-search-icon">🔍</span>
+        <input type="text" placeholder="Cari judul, ISBN, atau mata kuliah..."
+               onkeydown="handleHeaderSearchKey(event)">
+      </div>
+
+      <!-- Actions -->
+      <div class="header-actions">
+        <button class="btn-sell-header" onclick="goToScreen('sell')">＋ Jual Buku</button>
+        <button class="header-avatar-btn" onclick="goToScreen('profile')">G</button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- ════════════════════════
+           HOME / LIBRARY SCREEN
+      ════════════════════════ -->
+      <div id="screen-home" class="screen active">
+        <div class="page-wrap">
+
+          <!-- Hero -->
+          <div class="home-hero">
+            <div class="hero-content">
+              <div class="hero-eyebrow">Platform Buku Bekas · Mahasiswa ITS</div>
+              <h1 class="hero-title">
+                Find your next<br>
+                <em>Semester Savior.</em>
+              </h1>
+              <p class="hero-sub">Jual beli buku bekas mata kuliah SKPB &amp; departemen — lebih mudah, lebih hemat, sesama mahasiswa ITS.</p>
+              <div class="hero-search">
+                <span class="hero-search-icon">🔍</span>
+                <input type="text" placeholder="Cari judul, ISBN, atau kode mata kuliah..."
+                       onclick="goToScreen('search')" readonly>
+              </div>
+              <div class="hero-stats">
+                <div>
+                  <div class="hero-stat-val">120+</div>
+                  <div class="hero-stat-lbl">Buku Tersedia</div>
+                </div>
+                <div>
+                  <div class="hero-stat-val">850+</div>
+                  <div class="hero-stat-lbl">Mahasiswa</div>
+                </div>
+                <div>
+                  <div class="hero-stat-val">ITS</div>
+                  <div class="hero-stat-lbl">Kampus</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Departments -->
+          <div class="section-header">
+            <h2 class="section-title">Departments</h2>
+            <a class="view-all" onclick="goToScreen('search')">View All</a>
+          </div>
+
+          <div class="dept-grid">
+            <div class="dept-grid-card" onclick="goToScreen('search')">
+              <div class="dept-grid-icon icon-pink">👷</div>
+              <div class="dept-grid-name">Engineering</div>
+              <div class="dept-grid-count">24 buku</div>
+            </div>
+            <div class="dept-grid-card" onclick="goToScreen('search')">
+              <div class="dept-grid-icon icon-yellow">💼</div>
+              <div class="dept-grid-name">Business</div>
+              <div class="dept-grid-count">12 buku</div>
+            </div>
+            <div class="dept-grid-card" onclick="goToScreen('search')">
+              <div class="dept-grid-icon icon-green">⚕️</div>
+              <div class="dept-grid-name">Medicine</div>
+              <div class="dept-grid-count">8 buku</div>
+            </div>
+            <div class="dept-grid-card" onclick="goToScreen('search')">
+              <div class="dept-grid-icon icon-blue">🔬</div>
+              <div class="dept-grid-name">Science</div>
+              <div class="dept-grid-count">18 buku</div>
+            </div>
+            <div class="dept-grid-card" onclick="goToScreen('search')">
+              <div class="dept-grid-icon icon-purple">📐</div>
+              <div class="dept-grid-name">SKPB</div>
+              <div class="dept-grid-count">32 buku</div>
+            </div>
+          </div>
+
+          <!-- Featured -->
+          <div class="section-header">
+            <h2 class="section-title">Featured Collection</h2>
+          </div>
+
+          <div class="featured-banner"
+               onclick="goToProduct('The Archive Selection','Academic Collections','Rp 89.000','Rp 120.000','badge-new','📚')">
+            <div class="featured-banner-bg-text">📚</div>
+            <div class="featured-banner-body">
+              <div class="featured-banner-label">Editor's Choice</div>
+              <div class="featured-banner-title">The Archive Selection</div>
+            </div>
+            <button class="featured-banner-add"
+                    onclick="event.stopPropagation(); showToast('Ditambahkan ke wishlist! 🔖')">+</button>
+          </div>
+
+          <!-- Recent books (dynamic grid) -->
+          <div class="section-header">
+            <h2 class="section-title">Recently Listed</h2>
+            <a class="view-all" onclick="goToScreen('search')">View All</a>
+          </div>
+
+          <div class="book-grid" id="homeBookGrid">
+            <!-- Rendered by js/app.js: _renderHomeGrid() -->
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ════════════════════════
+           SEARCH / BROWSE SCREEN
+      ════════════════════════ -->
+      <div id="screen-search" class="screen">
+        <div class="page-wrap">
+
+          <div class="search-page-header">
+            <div class="search-page-bar">
+              <span style="color:var(--text-muted);font-size:17px">🔍</span>
+              <input type="text" placeholder="Cari judul, ISBN, mata kuliah, atau departemen..."
+                     id="searchInput" oninput="filterSearch(this.value)">
+              <span class="search-clear" onclick="clearSearch()">✕</span>
+            </div>
+
+            <div class="search-meta">
+              <div class="search-meta-label">Search Results</div>
+              <div class="search-meta-query" id="searchQuery">Semua Buku</div>
+              <div class="search-meta-count" id="searchCount">Menampilkan 6 buku</div>
+            </div>
+
+            <div class="filter-row">
+              <button class="filter-icon-btn">⚙️</button>
+              <button class="filter-chip active" onclick="filterChip(this)">All Results</button>
+              <button class="filter-chip" onclick="filterChip(this)">SKPB</button>
+              <button class="filter-chip" onclick="filterChip(this)">Biology</button>
+              <button class="filter-chip" onclick="filterChip(this)">Engineering</button>
+              <button class="filter-chip" onclick="filterChip(this)">Like New</button>
+              <button class="filter-chip" onclick="filterChip(this)">Under Rp 75rb</button>
+            </div>
+          </div>
+
+          <!-- Rendered by js/app.js: _renderSearchResults() -->
+          <div id="searchResults"></div>
+
+        </div>
+      </div>
+
+      <!-- ════════════════════════
+           PRODUCT DETAIL SCREEN
+      ════════════════════════ -->
+      <div id="screen-product" class="screen">
+        <div class="page-wrap">
+
+          <!-- Back navigation row -->
+          <div class="product-back-row">
+            <button class="btn-back" onclick="goBack()">← Kembali</button>
+            <div class="product-back-spacer"></div>
+            <div class="product-share-actions">
+              <button class="btn-icon" onclick="showToast('Link disalin! 📋')" title="Bagikan">📤</button>
+              <button class="btn-icon" onclick="showToast('Ditambahkan ke wishlist! 🔖')" title="Simpan">🔖</button>
+            </div>
+          </div>
+
+          <!-- Two-column layout -->
+          <div class="product-layout">
+
+            <!-- Left: cover + CTA -->
+            <div class="product-cover-col">
+              <div class="product-book-showcase">
+                <div class="product-3d-book" id="productEmoji">📖</div>
+                <div class="product-discount-tag" id="discountTag" style="display:none">-30% OFF</div>
+              </div>
+              <div class="product-action-row">
+                <button class="btn-secondary" onclick="showToast('Ditambahkan ke keranjang! 🛒')">Add to Cart</button>
+                <button class="btn-primary" onclick="showToast('Menghubungi penjual... ✅')">BUY NOW</button>
+              </div>
+            </div>
+
+            <!-- Right: info -->
+            <div class="product-info-col">
+              <div class="product-cat-tag" id="productCat">Academic &amp; Philosophy</div>
+              <h1 class="product-title" id="productTitle">The Architecture of Modern Thought</h1>
+              <div class="product-author" id="productAuthorEl">By Prof. Julian Aris Thorne</div>
+
+              <div class="price-row">
+                <div class="price-main" id="productPriceEl">Rp 112.500</div>
+                <div class="price-orig" id="productOrigEl">Rp 150.000</div>
+                <div class="badge badge-new" id="productBadgeEl">Like New</div>
+              </div>
+
+              <div class="detail-card">
+                <div class="detail-row">
+                  <span class="detail-label">ISBN</span>
+                  <span class="detail-value">978-602-481-XXX-X</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Penerbit</span>
+                  <span class="detail-value">Erlangga / Oxford Press</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Edisi</span>
+                  <span class="detail-value">Edisi ke-3, 2021</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Kondisi</span>
+                  <span class="detail-value" id="productCondEl" style="color:#1A7040">Like New</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Lokasi</span>
+                  <span class="detail-value">Sukolilo, Surabaya</span>
+                </div>
+              </div>
+
+              <div class="seller-card">
+                <div class="seller-avatar">R</div>
+                <div style="flex:1">
+                  <div class="seller-name">Rizky Pratama</div>
+                  <div class="seller-dept">Teknik Informatika · ITS '22</div>
+                  <div class="seller-rating">★★★★★ 4.9 · 12 terjual</div>
+                </div>
+                <button class="btn-chat" onclick="showToast('Membuka chat dengan penjual... 💬')">Chat</button>
+              </div>
+
+              <div class="product-desc-card">
+                <div class="product-desc-title">Deskripsi</div>
+                <div class="product-desc-body">
+                  Buku dalam kondisi sangat baik, tidak ada coretan atau highlight. Dibeli semester lalu tapi sudah tidak digunakan. Bisa diantar ke kampus ITS atau meet up di Sukolilo area.
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ════════════════════════
+           SELL SCREEN
+      ════════════════════════ -->
+      <div id="screen-sell" class="screen">
+        <div class="page-wrap">
+
+          <div class="sell-layout">
+
+            <!-- Left: hero info -->
+            <div class="sell-hero">
+              <h1 class="sell-hero-title">Curate<br>Your Shelf.</h1>
+              <p class="sell-hero-sub">Share your literary treasures with the community. Every book has a second life waiting to happen.</p>
+
+              <div class="sell-info-cards">
+                <div class="sell-info-card">
+                  <div class="sell-info-icon icon-green">📦</div>
+                  <div>
+                    <div class="sell-info-card-title">Mudah Diposting</div>
+                    <div class="sell-info-card-sub">Isi form singkat, buku langsung tampil di marketplace.</div>
+                  </div>
+                </div>
+                <div class="sell-info-card">
+                  <div class="sell-info-icon icon-yellow">💬</div>
+                  <div>
+                    <div class="sell-info-card-title">Tawar Menawar</div>
+                    <div class="sell-info-card-sub">Fitur negosiasi harga langsung dengan pembeli.</div>
+                  </div>
+                </div>
+                <div class="sell-info-card">
+                  <div class="sell-info-icon icon-blue">🔒</div>
+                  <div>
+                    <div class="sell-info-card-title">Aman &amp; Terpercaya</div>
+                    <div class="sell-info-card-sub">Verifikasi akun mahasiswa ITS untuk keamanan transaksi.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: form -->
+            <div class="sell-form-card">
+
+              <div style="margin-bottom:20px">
+                <div style="font-size:16px;font-weight:800;color:var(--text-dark);margin-bottom:4px">Detail Buku</div>
+                <div style="font-size:13px;color:var(--text-muted)">Isi informasi buku yang ingin kamu jual</div>
+              </div>
+
+              <div style="display:flex;align-items:center;margin-bottom:8px">
+                <span style="font-size:13px;font-weight:700;color:var(--text-dark)">Foto Buku</span>
+                <span class="required-tag">REQUIRED</span>
+              </div>
+
+              <div class="gallery-box" onclick="showToast('Fitur upload foto akan segera hadir 📷')">
+                <div class="gallery-icon">📸</div>
+                <div class="gallery-title">Add Front Cover</div>
+                <div class="gallery-sub">High-res vertical photo</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Judul Buku <span class="required-tag">REQUIRED</span></label>
+                <input class="form-input" type="text" placeholder="e.g. Kalkulus: Early Transcendentals">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Penulis / Author</label>
+                <input class="form-input" type="text" placeholder="e.g. James Stewart">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">
+                  ISBN
+                  <span style="font-size:11px;color:var(--text-muted);font-weight:400">(opsional)</span>
+                </label>
+                <input class="form-input" type="text" placeholder="e.g. 978-602-XXXX-XX-X">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Departemen / Mata Kuliah</label>
+                <select class="form-select">
+                  <option value="">Pilih Departemen</option>
+                  <optgroup label="SKPB (Wajib Umum)">
+                    <option>Kalkulus</option>
+                    <option>Fisika Dasar</option>
+                    <option>Kimia Dasar</option>
+                    <option>Bahasa Indonesia</option>
+                  </optgroup>
+                  <optgroup label="Teknik">
+                    <option>Teknik Mesin</option>
+                    <option>Teknik Elektro</option>
+                    <option>Teknik Informatika</option>
+                    <option>Teknik Sipil</option>
+                    <option>Teknik Kimia</option>
+                    <option>Teknik Industri</option>
+                  </optgroup>
+                  <optgroup label="Sains">
+                    <option>Fisika</option>
+                    <option>Matematika</option>
+                    <option>Biologi</option>
+                    <option>Kimia</option>
+                  </optgroup>
+                  <optgroup label="Lainnya">
+                    <option>Bisnis &amp; Manajemen</option>
+                    <option>Desain Produk</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Kondisi Buku</label>
+                <div class="condition-row">
+                  <div class="condition-opt selected" onclick="selectCondition(this)">✨ Like New</div>
+                  <div class="condition-opt"          onclick="selectCondition(this)">📖 Slightly Used</div>
+                  <div class="condition-opt"          onclick="selectCondition(this)">📕 Used</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Harga (Rp)</label>
+                <input class="form-input" type="number" placeholder="e.g. 75000" min="0">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Buka Penawaran?</label>
+                <div style="display:flex;gap:8px">
+                  <div class="condition-opt selected" style="flex:1;text-align:center" onclick="selectToggle(this,event)">✅ Ya, bisa ditawar</div>
+                  <div class="condition-opt"          style="flex:1;text-align:center" onclick="selectToggle(this,event)">❌ Tidak</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Deskripsi</label>
+                <textarea class="form-textarea" rows="3"
+                          placeholder="Deskripsikan kondisi buku, catatan, highlight, dll..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Lokasi Pertemuan</label>
+                <input class="form-input" type="text" placeholder="e.g. Gedung Robotika ITS, Sukolilo">
+              </div>
+
+              <button class="submit-btn" onclick="showToast('Buku berhasil diposting! 🎉')">
+                Posting Buku Sekarang →
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════════════════════
+           PROFILE SCREEN
+      ════════════════════════ -->
+      <div id="screen-profile" class="screen">
+        <div class="page-wrap">
+
+          <div class="profile-layout">
+
+            <!-- Left: profile card -->
+            <div>
+              <div class="profile-card">
+                <div class="profile-avatar">G</div>
+                <div class="profile-name">Gandrung Ghafar H.A</div>
+                <div class="profile-nrp">5054231008 · Teknik Informatika · ITS '23</div>
+                <div class="profile-stats">
+                  <div>
+                    <div class="stat-val">3</div>
+                    <div class="stat-lbl">Dijual</div>
+                  </div>
+                  <div>
+                    <div class="stat-val">7</div>
+                    <div class="stat-lbl">Dibeli</div>
+                  </div>
+                  <div>
+                    <div class="stat-val">4.8</div>
+                    <div class="stat-lbl">Rating</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: menu -->
+            <div>
+              <div class="profile-section-label">Aktivitas</div>
+
+              <div class="menu-item" onclick="showToast('Membuka daftar listing...')">
+                <div class="menu-icon icon-pink">📦</div>
+                <div class="menu-info">
+                  <div class="menu-title">Buku yang Saya Jual</div>
+                  <div class="menu-sub">3 listing aktif</div>
+                </div>
+                <span class="menu-chevron">›</span>
+              </div>
+
+              <div class="menu-item" onclick="showToast('Membuka riwayat pembelian...')">
+                <div class="menu-icon icon-green">🛒</div>
+                <div class="menu-info">
+                  <div class="menu-title">Riwayat Pembelian</div>
+                  <div class="menu-sub">7 buku dibeli</div>
+                </div>
+                <span class="menu-chevron">›</span>
+              </div>
+
+              <div class="menu-item" onclick="showToast('Membuka wishlist...')">
+                <div class="menu-icon icon-yellow">⭐</div>
+                <div class="menu-info">
+                  <div class="menu-title">Wishlist</div>
+                  <div class="menu-sub">5 buku disimpan</div>
+                </div>
+                <span class="menu-chevron">›</span>
+              </div>
+
+              <div class="menu-item" onclick="showToast('Membuka pesan...')">
+                <div class="menu-icon icon-blue">💬</div>
+                <div class="menu-info">
+                  <div class="menu-title">Pesan</div>
+                  <div class="menu-sub">2 chat aktif</div>
+                </div>
+                <span class="menu-chevron" style="position:relative">
+                  <span style="position:absolute;top:-8px;right:8px;background:var(--accent);color:white;font-size:10px;font-weight:800;padding:2px 6px;border-radius:10px">2</span>
+                  ›
+                </span>
+              </div>
+
+              <div class="profile-section-label" style="margin-top:20px">Akun</div>
+
+              <div class="menu-item" onclick="showToast('Membuka pengaturan...')">
+                <div class="menu-icon icon-purple">⚙️</div>
+                <div class="menu-info">
+                  <div class="menu-title">Pengaturan</div>
+                  <div class="menu-sub">Profil &amp; preferensi</div>
+                </div>
+                <span class="menu-chevron">›</span>
+              </div>
+
+              <div class="menu-item" onclick="showToast('Membuka pusat bantuan...')">
+                <div class="menu-icon" style="background:#E8F4FF">❓</div>
+                <div class="menu-info">
+                  <div class="menu-title">Pusat Bantuan</div>
+                  <div class="menu-sub">FAQ &amp; hubungi kami</div>
+                </div>
+                <span class="menu-chevron">›</span>
+              </div>
+
+              <div class="menu-item" onclick="showToast('Sampai jumpa! 👋')">
+                <div class="menu-icon" style="background:#FFE0E0">🚪</div>
+                <div class="menu-info">
+                  <div class="menu-title" style="color:#D03030">Keluar</div>
+                  <div class="menu-sub">Logout dari akun</div>
+                </div>
+                <span class="menu-chevron" style="color:#D03030">›</span>
+              </div>
+
+              <div class="profile-footer">
+                BUKUIN v0.1.0 · Kelompok 3 KBT 31<br>
+                <span style="font-size:11px">Aryaputra · Faisal · Valentino · Gandrung</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </main><!-- end .main-content -->
+
+    <!-- MOBILE BOTTOM NAV -->
+    <nav class="mobile-nav">
+      <button class="mob-nav-tab active" data-screen="home" onclick="goToScreen('home')">
+        <span class="mob-nav-icon">🏠</span>
+        <span class="mob-nav-label">Library</span>
+      </button>
+      <button class="mob-nav-tab" data-screen="search" onclick="goToScreen('search')">
+        <span class="mob-nav-icon">🔍</span>
+        <span class="mob-nav-label">Search</span>
+      </button>
+      <button class="mob-nav-tab" data-screen="sell" onclick="goToScreen('sell')">
+        <div class="mob-sell-bubble">＋</div>
+        <span class="mob-nav-label">Sell</span>
+      </button>
+      <button class="mob-nav-tab" data-screen="profile" onclick="goToScreen('profile')">
+        <span class="mob-nav-icon">👤</span>
+        <span class="mob-nav-label">Profile</span>
+      </button>
+    </nav>
+
+  </div><!-- end .main-wrapper -->
+</div><!-- end #app -->
+
+<div class="toast" id="toast"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
